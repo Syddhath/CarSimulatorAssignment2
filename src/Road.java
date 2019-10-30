@@ -7,9 +7,9 @@ public class Road extends JPanel {
     public void paint(Graphics rl) {
 
 
-        rl.drawLine(0, 240,  600, 240);
+        rl.drawLine(0, 240, 600, 240);
         rl.drawLine((int) 850.25, 240, 1450, 240);
-        rl.drawLine(0, 480,  600, 480);
+        rl.drawLine(0, 480, 600, 480);
         rl.drawLine((int) 850.25, 480, 1450, 480);
 
 
@@ -25,5 +25,4 @@ public class Road extends JPanel {
     }
 
 
-
-    }
+}
