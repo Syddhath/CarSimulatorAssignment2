@@ -3,6 +3,8 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Random;
+import java.util.concurrent.TimeUnit;
+
 
 
 public class Vehicle extends JPanel implements ActionListener {
@@ -39,7 +41,7 @@ public class Vehicle extends JPanel implements ActionListener {
             c.fillRect(600, 190, 20, 40);
         }
         if (change == 1) {
-            c.setColor(Color.green);
+            c.setColor(Color.GREEN);
             c.fillRect(600, 190, 20, 40);
         }
     }
@@ -48,15 +50,18 @@ public class Vehicle extends JPanel implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         x = x + velX;
 
-        while (x > 500 && x < 600) {
-            if (change == 0) {
+
+            if (x > 500 && x < 600 && change == 0) {
                 tm.stop();
-            }
-            if (change == 1) {
+                try {
+                    TimeUnit.SECONDS.sleep(1);
+                } catch (InterruptedException e1) {
+                    e1.printStackTrace();
+                }
+                change++;
                 tm.start();
             }
 
-        }
         repaint();
     }
 }
