@@ -47,10 +47,16 @@ public class Vehicle extends JPanel implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         x = x + velX;
-        if(change == 0){
-            x = 600;
-        }
 
+        while (x > 500 && x < 600) {
+            if (change == 0) {
+                tm.stop();
+            }
+            if (change == 1) {
+                tm.start();
+            }
+
+        }
         repaint();
     }
 }
