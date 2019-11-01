@@ -11,15 +11,6 @@ public class Vehicle extends JPanel implements ActionListener {
 
     int change;
     Random random = new Random();
-
-    Vehicle() {
-        setOpaque(false);
-        setPreferredSize(new Dimension(1500, 960));
-        setBackground(new Color(255, 255, 255, 0));
-        tm.start();
-        t.start();
-    }
-
     Timer t = new Timer(1000, new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -28,6 +19,14 @@ public class Vehicle extends JPanel implements ActionListener {
         }
 
     });
+
+    Vehicle() {
+        setOpaque(false);
+        setPreferredSize(new Dimension(1500, 960));
+        setBackground(new Color(255, 255, 255, 0));
+        tm.start();
+        t.start();
+    }
 
     @Override
     protected void paintComponent(Graphics c) {
@@ -45,19 +44,13 @@ public class Vehicle extends JPanel implements ActionListener {
         }
     }
 
-//    public void paint(Graphics c) {
-//        c.setColor(getBackground());
-//        Rectangle r = c.getClipBounds();
-//        c.setColor(Color.green);
-//        c.fillRect(x, 290, 40, 20);
-//        tm.start();
-//        super.paint(c);
-//    }
-
-
     @Override
     public void actionPerformed(ActionEvent e) {
         x = x + velX;
+        if(change == 0){
+            x = 600;
+        }
+
         repaint();
     }
 }
