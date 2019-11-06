@@ -44,7 +44,9 @@ public class Vehicle extends JPanel implements ActionListener {
         super.paintComponent(c);
         c.setColor(Color.blue);
         c.fillRect(x, 290, 40, 20);
+        c.setColor(Color.PINK);
         c.fillRect(x, 390, 40, 20);
+        c.setColor(Color.GRAY);
         c.fillRect(720, y, 20, 40);
 
         if (change == 0) {
