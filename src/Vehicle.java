@@ -7,28 +7,19 @@ import java.util.concurrent.TimeUnit;
 
 
 public class Vehicle extends JPanel implements ActionListener {
-    Timer horiCar = new Timer(5, this);
-    int x = 0, velX = 2;
-    int y = 0, velY = 2;
-    JButton rerun = new JButton("ReRun");
+    private Timer horiCar = new Timer(5, this);
+    private int x = 0;
+    private int y = 0;
+    private JButton rerun = new JButton("ReRun");
 
-    int change;
-    Random random = new Random();
-    Timer t = new Timer(1000, new ActionListener() {
+    private int change;
+    private Random random = new Random();
+    private Timer t = new Timer(1000, new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
             change = random.nextInt(2);
             repaint();
         }
-
-    });
-    Timer verCar = new Timer(5, new ActionListener() {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            y = y + velY;
-            repaint();
-        }
-
     });
 
     Vehicle() {
@@ -37,25 +28,25 @@ public class Vehicle extends JPanel implements ActionListener {
         setBackground(new Color(255, 255, 255, 0));
         horiCar.start();
         t.start();
-        verCar.start();
-
-        add(rerun);
-        rerun.addActionListener(new ActionListener() {
+        Timer verCar = new Timer(5, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
-                JFrame jFrame2 = new JFrame();
-                Road road = new Road();
-                Vehicle vehicle = new Vehicle();
-                JMenuBar jMenuBar2 = new JMenuBar();
-                jFrame2.setTitle("Car Simulator");
-                jFrame2.setSize(1500, 960);
-                jFrame2.setContentPane(road);
-                jFrame2.add(vehicle);
-                jFrame2.setVisible(true);
-
-
+                int velY = 2;
+                y = y + velY;
+                repaint();
             }
+        });
+        verCar.start();
+        add(rerun);
+        rerun.addActionListener(e -> {
+            JFrame jFrame2 = new JFrame();
+            Road road = new Road();
+            Vehicle vehicle = new Vehicle();
+            jFrame2.setTitle("Car Simulator");
+            jFrame2.setSize(1500, 960);
+            jFrame2.setContentPane(road);
+            jFrame2.add(vehicle);
+            jFrame2.setVisible(true);
         });
     }
 
@@ -66,9 +57,8 @@ public class Vehicle extends JPanel implements ActionListener {
         c.fillRect(x, 290, 40, 20);
         c.setColor(Color.PINK);
         c.fillRect(x, 390, 40, 20);
-        c.setColor(Color.GRAY);
-        c.fillRect(720, y, 20, 40);
-
+//        c.setColor(Color.GRAY);
+//        c.fillRect(720, y, 20, 40);
         if (change == 0) {
             c.setColor(Color.RED);
             c.fillRect(600, 190, 20, 40);
@@ -81,6 +71,7 @@ public class Vehicle extends JPanel implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        int velX = 2;
         x = x + velX;
         if (x > 500 && x < 600 && change == 0) {
             horiCar.stop();
@@ -92,9 +83,6 @@ public class Vehicle extends JPanel implements ActionListener {
             change++;
             horiCar.start();
         }
-
         repaint();
     }
-
-
 }
