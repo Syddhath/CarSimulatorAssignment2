@@ -18,6 +18,7 @@ public class Main {
         jMenuBar.add(run);
         jMenuBar.add(close);
         jFrame.setVisible(true);
+        run.setAlignmentX(500);
         close.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -39,7 +40,6 @@ public class Main {
                 jFrame2.add(vehicle);
                 jFrame2.setVisible(true);
                 jFrame2.add(jMenuBar2);
-
                 JButton rerun = new JButton("ReRun");
                 jMenuBar2.add(rerun);
 
@@ -49,9 +49,6 @@ public class Main {
                         System.exit(0);
                     }
                 });
-
-
-
             }
         });
     }

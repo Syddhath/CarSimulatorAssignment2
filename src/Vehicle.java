@@ -10,6 +10,7 @@ public class Vehicle extends JPanel implements ActionListener {
     Timer horiCar = new Timer(5, this);
     int x = 0, velX = 2;
     int y = 0, velY = 2;
+    JButton rerun = new JButton("ReRun");
 
     int change;
     Random random = new Random();
@@ -37,6 +38,25 @@ public class Vehicle extends JPanel implements ActionListener {
         horiCar.start();
         t.start();
         verCar.start();
+
+        add(rerun);
+        rerun.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                JFrame jFrame2 = new JFrame();
+                Road road = new Road();
+                Vehicle vehicle = new Vehicle();
+                JMenuBar jMenuBar2 = new JMenuBar();
+                jFrame2.setTitle("Car Simulator");
+                jFrame2.setSize(1500, 960);
+                jFrame2.setContentPane(road);
+                jFrame2.add(vehicle);
+                jFrame2.setVisible(true);
+
+
+            }
+        });
     }
 
     @Override
@@ -75,4 +95,6 @@ public class Vehicle extends JPanel implements ActionListener {
 
         repaint();
     }
+
+
 }
