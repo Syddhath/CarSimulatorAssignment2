@@ -9,7 +9,7 @@ import java.util.concurrent.TimeUnit;
 public class Vehicle extends JPanel implements ActionListener {
     private Timer horiCar = new Timer(5, this);
     private int x = 0;
-    private int y = 0;
+    private int y = 1450;
     private int change;
     private Random random = new Random();
 
@@ -28,7 +28,7 @@ public class Vehicle extends JPanel implements ActionListener {
         t.start();
         Timer verCar = new Timer(5, e -> {
             int velY = 2;
-            y = y + velY;
+            y = y - velY;
             repaint();
         });
         verCar.start();
@@ -57,7 +57,8 @@ public class Vehicle extends JPanel implements ActionListener {
 //        c.fillRect(x, 390, 40, 20);
 
         c.setColor(Color.GRAY);
-        c.fillRect(720, y, 20, 40);
+        c.fillRect(y, 390, 40, 20);
+
         if (change == 0) {
             c.setColor(Color.RED);
             c.fillRect(600, 190, 20, 40);
