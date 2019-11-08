@@ -6,6 +6,7 @@ class VehicleTrafficLightTest {
 
     @Test
     void test() {
+
         VehicleTrafficLight light = new VehicleTrafficLight();
         assertEquals(0, light.getX());
         assertEquals(0, light.getY());
