@@ -37,16 +37,18 @@ public class VehicleTrafficLight extends JPanel implements ActionListener {
 
         //Car moving from right to left
 
-        Timer verCar = new Timer(5, e -> {
+        Timer lCar = new Timer(5, e -> {
             int velY = 2;
             y = y - velY;
             repaint();
         });
-        verCar.start();
+        lCar.start();
 
         //Button for Restart the program
 
         JButton rerun = new JButton("ReRun");
+        JButton stop = new JButton("Stop");
+        add(stop);
         add(rerun);
         rerun.addActionListener(e -> {
             JFrame jFrame2 = new JFrame();
@@ -59,11 +61,17 @@ public class VehicleTrafficLight extends JPanel implements ActionListener {
             jFrame2.setVisible(true);
         });
 
-        //Button to exit the Simulator
-
+        //Button to exit the Simulator and stop the car
+        stop.addActionListener(e -> stop());
         JButton exit = new JButton("Exit");
         add(exit);
         exit.addActionListener(e -> System.exit(0));
+    }
+
+    //TO stop the car
+
+    private void stop() {
+        rCar.stop();
     }
 
     //Drawing the car and the starting position

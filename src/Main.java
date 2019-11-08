@@ -1,5 +1,6 @@
 import javax.swing.*;
 import java.awt.event.WindowEvent;
+
 import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
 
 public class Main {
