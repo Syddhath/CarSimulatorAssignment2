@@ -10,33 +10,30 @@ public class Vehicle extends JPanel implements ActionListener {
     private Timer horiCar = new Timer(5, this);
     private int x = 0;
     private int y = 0;
-    private JButton rerun = new JButton("ReRun");
-
     private int change;
     private Random random = new Random();
-    private Timer t = new Timer(1000, new ActionListener() {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            change = random.nextInt(2);
-            repaint();
-        }
-    });
 
     Vehicle() {
         setOpaque(false);
         setPreferredSize(new Dimension(1500, 960));
         setBackground(new Color(255, 255, 255, 0));
         horiCar.start();
-        t.start();
-        Timer verCar = new Timer(5, new ActionListener() {
+        Timer t = new Timer(1000, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                int velY = 2;
-                y = y + velY;
+                change = random.nextInt(2);
                 repaint();
             }
         });
+        t.start();
+        Timer verCar = new Timer(5, e -> {
+            int velY = 2;
+            y = y + velY;
+            repaint();
+        });
         verCar.start();
+
+        JButton rerun = new JButton("ReRun");
         add(rerun);
         rerun.addActionListener(e -> {
             JFrame jFrame2 = new JFrame();
@@ -55,10 +52,12 @@ public class Vehicle extends JPanel implements ActionListener {
         super.paintComponent(c);
         c.setColor(Color.blue);
         c.fillRect(x, 290, 40, 20);
-        c.setColor(Color.PINK);
-        c.fillRect(x, 390, 40, 20);
-//        c.setColor(Color.GRAY);
-//        c.fillRect(720, y, 20, 40);
+
+//        c.setColor(Color.PINK);
+//        c.fillRect(x, 390, 40, 20);
+
+        c.setColor(Color.GRAY);
+        c.fillRect(720, y, 20, 40);
         if (change == 0) {
             c.setColor(Color.RED);
             c.fillRect(600, 190, 20, 40);

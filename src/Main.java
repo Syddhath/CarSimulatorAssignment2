@@ -7,24 +7,24 @@ import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
 
 public class Main {
     public static void main(String[] args) {
-
         JFrame jFrame = new JFrame();
         jFrame.setTitle("Car");
         jFrame.setSize(1500, 960);
         JMenuBar jMenuBar = new JMenuBar();
-        JButton run = new JButton("Run");
-        JButton close = new JButton("Close");
+//        JButton run = new JButton("Run");
+//        JButton close = new JButton("Close");
         jFrame.add(jMenuBar);
-        jMenuBar.add(run);
-        jMenuBar.add(close);
+//        jMenuBar.add(run);
+//        jMenuBar.add(close);
+
+        jFrame.setJMenuBar(jMenuBar);
+        JMenu file = new JMenu("File");
+        jMenuBar.add(file);
+        JMenuItem run = new JMenuItem("Run Simulator");
+        JMenuItem close = new JMenuItem("Exit");
+        file.add(run);
+        file.add(close);
         jFrame.setVisible(true);
-        run.setAlignmentX(500);
-        close.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                System.exit(0);
-            }
-        });
         run.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -40,16 +40,16 @@ public class Main {
                 jFrame2.add(vehicle);
                 jFrame2.setVisible(true);
                 jFrame2.add(jMenuBar2);
-                JButton rerun = new JButton("ReRun");
-                jMenuBar2.add(rerun);
 
-                rerun.addActionListener(new ActionListener() {
-                    @Override
-                    public void actionPerformed(ActionEvent e) {
-                        System.exit(0);
-                    }
-                });
             }
         });
+        close.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.exit(0);
+            }
+        });
+
+
     }
 }
