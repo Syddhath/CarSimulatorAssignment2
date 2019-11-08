@@ -1,6 +1,4 @@
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 
 import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
@@ -25,30 +23,22 @@ public class Main {
         file.add(run);
         file.add(close);
         jFrame.setVisible(true);
-        run.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                JFrame jFrame2 = new JFrame();
-                jFrame2.dispatchEvent(new WindowEvent(jFrame2, WindowEvent.WINDOW_CLOSING));
-                Road road = new Road();
-                Vehicle vehicle = new Vehicle();
-                JMenuBar jMenuBar2 = new JMenuBar();
-                jFrame2.setTitle("Car Simulator");
-                jFrame2.setSize(1500, 960);
-                jFrame2.setDefaultCloseOperation(EXIT_ON_CLOSE);
-                jFrame2.setContentPane(road);
-                jFrame2.add(vehicle);
-                jFrame2.setVisible(true);
-                jFrame2.add(jMenuBar2);
+        run.addActionListener(e -> {
+            JFrame jFrame2 = new JFrame();
+            jFrame2.dispatchEvent(new WindowEvent(jFrame2, WindowEvent.WINDOW_CLOSING));
+            Road road = new Road();
+            VehicleTrafficLight vehicleTrafficLight = new VehicleTrafficLight();
+            JMenuBar jMenuBar2 = new JMenuBar();
+            jFrame2.setTitle("Car Simulator");
+            jFrame2.setSize(1500, 960);
+            jFrame2.setDefaultCloseOperation(EXIT_ON_CLOSE);
+            jFrame2.setContentPane(road);
+            jFrame2.add(vehicleTrafficLight);
+            jFrame2.setVisible(true);
+            jFrame2.add(jMenuBar2);
 
-            }
         });
-        close.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                System.exit(0);
-            }
-        });
+        close.addActionListener(e -> System.exit(0));
 
 
     }

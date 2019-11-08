@@ -6,24 +6,21 @@ import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 
-public class Vehicle extends JPanel implements ActionListener {
+public class VehicleTrafficLight extends JPanel implements ActionListener {
     private Timer horiCar = new Timer(5, this);
     private int x = 0;
     private int y = 1450;
     private int change;
     private Random random = new Random();
 
-    Vehicle() {
+    VehicleTrafficLight() {
         setOpaque(false);
         setPreferredSize(new Dimension(1500, 960));
         setBackground(new Color(255, 255, 255, 0));
         horiCar.start();
-        Timer t = new Timer(1000, new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                change = random.nextInt(2);
-                repaint();
-            }
+        Timer t = new Timer(1000, e -> {
+            change = random.nextInt(2);
+            repaint();
         });
         t.start();
         Timer verCar = new Timer(5, e -> {
@@ -38,11 +35,11 @@ public class Vehicle extends JPanel implements ActionListener {
         rerun.addActionListener(e -> {
             JFrame jFrame2 = new JFrame();
             Road road = new Road();
-            Vehicle vehicle = new Vehicle();
+            VehicleTrafficLight vehicleTrafficLight = new VehicleTrafficLight();
             jFrame2.setTitle("Car Simulator");
             jFrame2.setSize(1500, 960);
             jFrame2.setContentPane(road);
-            jFrame2.add(vehicle);
+            jFrame2.add(vehicleTrafficLight);
             jFrame2.setVisible(true);
         });
     }
